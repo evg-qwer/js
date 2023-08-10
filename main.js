@@ -3,6 +3,7 @@ import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
 import { delay } from './src/delay.js';
+import { useFetch } from './src/useFetch.js';
 
 async function init() {
   document.querySelector('#app').innerHTML = `
@@ -27,8 +28,10 @@ async function init() {
 
   console.log('Start delay...');
   await delay(3000);
+  console.log('End delay...');
 
-  console.log('Hello');
+  const data = await useFetch('/api/get.php');
+  console.log('data', data);
 }
 
 init();
